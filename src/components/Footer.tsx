@@ -5,7 +5,7 @@ interface IFooterProps {}
 const Footer: React.FC<IFooterProps> = () => {
     return (
         <footer>
-            <p>&copy; Madame Organic { new Date().getFullYear() }</p>
+            <p>&copy; Client For Node Microservices { new Date().getFullYear() }</p>
         </footer>
     )
 };

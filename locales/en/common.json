@@ -1,10 +1,10 @@
 {
     "header": {
         "home": "Home",
-        "contact": "Contact",
-        "about": "About"
+        "login": "Login",
+        "register": "Register"
     },
     "footer": {
-        "organization": "Madame Organic"
+        "organization": "Micro Service Client"
     }
 }

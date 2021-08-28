@@ -1,9 +1,11 @@
 {
-    "locales": ["th", "en"],
-    "defaultLocale": "th",
+    "locales": ["en"],
+    "defaultLocale": "en",
     "pages": {
         "*": ["common"],
         "/": ["home"],
-        "/contact": ["contact"]
+        "/register": ["register"],
+        "/login": ["login"],
+        "/me": ["userDetails"]
     }
 }

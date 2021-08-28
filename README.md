@@ -26,7 +26,10 @@ This client project uses the following libraries and tools:
 ## Usage
 
 ```bash
-# Running
+# Installing Dependencies
+$ yarn # or
+$ npm i
+
 
 # This starts the app in development mode
 $ yarn dev # or
@@ -52,4 +55,4 @@ $ yarn doc
 ## License
 
 ---
-This boilerplate is released under the [MIT license](https://opensource.org/licenses/MIT).
+This app is released under the [MIT license](https://opensource.org/licenses/MIT).

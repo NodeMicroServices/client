@@ -10,7 +10,7 @@ export default function Home() {
 
     return (
         <Layout
-            pageTitle="Chu Choice"
+            pageTitle="Micro Service Client"
             currentPageUrl="/"
             metaInfo={[
                 {
