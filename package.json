@@ -1,0 +1,58 @@
+{
+    "name": "mo-fe",
+    "version": "1.0.0",
+    "description": "Front end for Madame Organic",
+    "main": "src/index.js",
+    "scripts": {
+        "dev": "next dev",
+        "lint": "eslint --ext .ts,.tsx",
+        "lint:fix": "eslint --ext .ts,.tsx --fix",
+        "test": "jest --watchAll"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "./src/**/*.+(ts|tsx)": [
+            "eslint --fix",
+            "git add"
+        ],
+        "./src/**/*.+(css|scss|js)": [
+            "prettier --write",
+            "git add"
+        ]
+    },
+    "author": "Bchu DEV",
+    "license": "ISC",
+    "dependencies": {
+        "@sentry/nextjs": "^6.10.0",
+        "next": "^11.1.0",
+        "next-translate": "^1.0.7",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-query": "^3.12.0"
+    },
+    "devDependencies": {
+        "@testing-library/dom": "^7.29.6",
+        "@testing-library/jest-dom": "^5.11.9",
+        "@testing-library/react": "^11.2.5",
+        "@testing-library/user-event": "^12.7.3",
+        "@types/jest": "^26.0.20",
+        "@types/node": "^14.14.31",
+        "@types/react": "^17.0.2",
+        "@typescript-eslint/eslint-plugin": "^4.29.0",
+        "@typescript-eslint/parser": "^4.29.0",
+        "babel-jest": "^26.6.3",
+        "eslint": "^7.32.0",
+        "eslint-config-prettier": "^8.0.0",
+        "eslint-plugin-prettier": "^3.3.1",
+        "husky": "^5.1.1",
+        "identity-obj-proxy": "^3.0.0",
+        "jest": "^26.6.3",
+        "lint-staged": "^10.5.4",
+        "prettier": "^2.2.1",
+        "typescript": "^4.1.5"
+    }
+}

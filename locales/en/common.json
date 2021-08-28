@@ -1,0 +1,10 @@
+{
+    "header": {
+        "home": "Home",
+        "contact": "Contact",
+        "about": "About"
+    },
+    "footer": {
+        "organization": "Madame Organic"
+    }
+}
