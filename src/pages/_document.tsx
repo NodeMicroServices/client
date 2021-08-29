@@ -12,12 +12,7 @@ class MyDocument extends Document {
                 <Head>
                     <title>Madame Organic: MO subtitle</title>
                     <meta charSet="UTF-8" />
-                    <meta name="description" content="Madame Organic is sth..." />
-                    <meta
-                        name="keywords"
-                        content="Madame Organic, beauty soap, foundation, makeup"
-                    />
-                    <meta name="author" content="Bchu Dev" />
+                    <meta name="author" content="beevk" />
                     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                     <link rel="shortcut icon" href="/favicon.ico" />
                     <script

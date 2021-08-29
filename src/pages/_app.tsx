@@ -6,6 +6,7 @@ import '../styles/index.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import * as gtag from '../lib/gtag';
+import 'bootstrap/dist/css/bootstrap.css';
 
 function CustomApp({ Component, pageProps }: AppProps) {
     const router = useRouter();

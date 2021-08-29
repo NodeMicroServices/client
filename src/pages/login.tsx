@@ -17,7 +17,7 @@ const Login: React.FC<IAboutProps> = () => {
         >
             <h1>Login Page</h1>
             <p>
-                Some Kinda Form goes Here
+                Some Kinda Login Form goes Here
             </p>
         </Layout>
     );
