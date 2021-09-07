@@ -17,15 +17,15 @@ const Home: NextPage<IHomeProps> = (props) => {
     const { t, lang } = useTranslation('home');
     const description = t('metaDescription');
     const keywords = t('metaKeywords');
+    const { data } = props;
 
-    const { sendRequest, errors } = useRequest({
-        url: `${process.env.NEXT_PUBLIC_AUTH_SERVER}/me`,
-        method: 'get',
-    });
-
+    // const { sendRequest, errors } = useRequest({
+    //     url: `${process.env.NEXT_PUBLIC_AUTH_SERVER}/me`,
+    //     method: 'get',
+    // });
     const onClick = async (e) => {
         e.preventDefault();
-        await sendRequest();
+        // await sendRequest();
     }
 
     return (
@@ -49,13 +49,19 @@ const Home: NextPage<IHomeProps> = (props) => {
     );
 }
 
-Home.getInitialProps = async ({ req }) => {
+export async function getServerSideProps(context) {
     // Send req, get data and return that data
     try {
-        console.log(`Requesting data from ${process.env.NEXT_PUBLIC_AUTH_SERVER}/me`);
-        const user = await axios.get(`${process.env.NEXT_PUBLIC_AUTH_SERVER}/me`);
-        return user.data;
+        // const  client = buildClient(context);
+        const { req } = context;
+        console.log('I AM EXECUTED')
+        const serverUrl = `http://ingress-nginx-controller.ingress-nginx.svc.cluster.local`;
+        const { data } = await axios.get(`${serverUrl}/api/users/me`, {
+            headers: req.headers
+        });
+        return { props: { data: data.data }};
     } catch (e) {
+        console.log('Error:::', e);
         return {};
     }
 }
