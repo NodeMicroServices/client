@@ -4,12 +4,14 @@ import Link, { LinkProps } from 'next/link';
 interface IAppLinksProps extends LinkProps {
     href: string;
     label: string;
+    [x: string]: any;
 }
 
-const AppLinks: React.FC<IAppLinksProps> = ({ href, label }) => {
+const AppLinks: React.FC<IAppLinksProps> = (props) => {
+    const { href, label, ...restProps } = props;
     return (
         <Link href={href}>
-            <a>{label}</a>
+            <a {...restProps}>{label}</a>
         </Link>
     );
 };

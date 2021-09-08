@@ -1,6 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import Header from "./Header";
+import Footer from "./Footer";
 
 interface IMetaInfo {
     name: string;
@@ -9,11 +11,13 @@ interface IMetaInfo {
 
 interface ILayoutProps {
     pageTitle: string;
+    currentPageUrl?: string;
     metaInfo?: IMetaInfo[] | undefined;
-    currentPageUrl: string;
+    [x: string]: any;
 }
 
-const Layout: React.FC<ILayoutProps> = ({ pageTitle, metaInfo, currentPageUrl, children }) => {
+const Layout: React.FC<ILayoutProps> = (props) => {
+    const { pageTitle, metaInfo, currentPageUrl, children } = props;
     const router = useRouter();
     const { locale } = router;
     const isCurrentLanguageThai = locale === 'th';
@@ -28,20 +32,22 @@ const Layout: React.FC<ILayoutProps> = ({ pageTitle, metaInfo, currentPageUrl, c
 
     return (
         <>
+            <Header />
             <Head>
                 <title>{pageTitle}</title>
-                <link
+                {currentPageUrl && <link
                     rel="alternate"
                     href={alternateUrlForAnotherLanguage}
                     hrefLang={isCurrentLanguageThai ? 'en' : 'th'}
-                />
-                <link rel="canonical" href={canonicalUrl} />
+                />}
+                {currentPageUrl && <link rel="canonical" href={canonicalUrl} />}
                 {metaInfo &&
                     metaInfo.map((info) => (
                         <meta name={info.name} content={info.content} key={info.name} />
                     ))}
             </Head>
             <main>{children}</main>
+            <Footer />
         </>
     );
 };

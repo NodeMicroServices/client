@@ -1,16 +1,14 @@
 import React from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { NextPage } from "next";
-import axios from "axios";
 
 import Layout from '../components/Layout';
+import { IUserJWTInfo } from "../interface/currentUser";
+import axiosForSS from "../lib/axiosForSS";
 import useRequest from "../hooks/useRequest";
 
 interface IHomeProps {
-    data?: {
-        id: string;
-        email: string;
-    }
+    data?: IUserJWTInfo
 }
 
 const Home: NextPage<IHomeProps> = (props) => {
@@ -23,10 +21,6 @@ const Home: NextPage<IHomeProps> = (props) => {
     //     url: `${process.env.NEXT_PUBLIC_AUTH_SERVER}/me`,
     //     method: 'get',
     // });
-    const onClick = async (e) => {
-        e.preventDefault();
-        // await sendRequest();
-    }
 
     return (
         <Layout
@@ -42,26 +36,20 @@ const Home: NextPage<IHomeProps> = (props) => {
                     content: description,
                 },
             ]}
+            currentUser={data}
         >
-            <h1>{t('welcomeText')}</h1>
-            <button onClick={onClick}>Want to get User Info</button>
+            <h1>Welcome {data ? data.email : 'Stranger'}</h1>
         </Layout>
     );
 }
 
 export async function getServerSideProps(context) {
-    // Send req, get data and return that data
     try {
-        // const  client = buildClient(context);
-        const { req } = context;
-        console.log('I AM EXECUTED')
-        const serverUrl = `http://ingress-nginx-controller.ingress-nginx.svc.cluster.local`;
-        const { data } = await axios.get(`${serverUrl}/api/users/me`, {
-            headers: req.headers
-        });
+        const client = axiosForSS(context);
+        const { data } = await client.get(`/api/users/me`);
         return { props: { data: data.data }};
     } catch (e) {
-        console.log('Error:::', e);
+        console.log('Error occurred while fetching data', e);
         return {};
     }
 }

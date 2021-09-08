@@ -2,11 +2,11 @@ import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { QueryClientProvider, QueryClient } from 'react-query';
+
 import '../styles/index.css';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import * as gtag from '../lib/gtag';
 import 'bootstrap/dist/css/bootstrap.css';
+import axiosForSS from "../lib/axiosForSS";
 
 function CustomApp({ Component, pageProps }: AppProps) {
     const router = useRouter();
@@ -21,13 +21,11 @@ function CustomApp({ Component, pageProps }: AppProps) {
         };
     }, [router.events]);
     return (
-        <>
-            <Header />
+        <div className="mainContainer container">
             <QueryClientProvider client={queryCache}>
                 <Component {...pageProps} />
             </QueryClientProvider>
-            <Footer />
-        </>
+        </div>
     );
 }
 

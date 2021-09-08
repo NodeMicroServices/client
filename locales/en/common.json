@@ -2,7 +2,8 @@
     "header": {
         "home": "Home",
         "login": "Login",
-        "register": "Register"
+        "register": "Register",
+        "logout": "Logout"
     },
     "footer": {
         "organization": "Micro Service Client"
